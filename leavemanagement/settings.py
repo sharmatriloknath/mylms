@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'lms',
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_framework_jwt'
+    'rest_framework_jwt',
+    'users'
 ]
 # REST_FRAMEWORK={
 # 'DEFAULT_AUTHENTICATION_CLASSES':('rest_framework.authentication. TokenAuthentication',),
@@ -49,7 +50,14 @@ INSTALLED_APPS = [
 JWT_AUTH = {
     'JWT_ALLOW_REFRESH': True,
 }
+AUTH_USER_MODEL = 'users.CustomUser'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
